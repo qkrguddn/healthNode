@@ -1,0 +1,16 @@
+spring:
+  jpa:
+    open-in-view: 'false'
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: tester
+    password: tester1234
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/testP
+
+
+#  username: tester
+#  password: tester1234
+
