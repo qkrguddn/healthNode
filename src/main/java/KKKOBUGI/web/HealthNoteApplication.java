@@ -1,4 +1,4 @@
-package KKKOBUGI.healthNote;
+package KKKOBUGI.web;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,7 +9,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 public class HealthNoteApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(HealthNoteApplication.class, args);
+
 	}
 
 }

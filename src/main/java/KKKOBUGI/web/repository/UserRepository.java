@@ -1,6 +1,6 @@
-package KKKOBUGI.healthNote.repository;
+package KKKOBUGI.web.repository;
 
-import KKKOBUGI.healthNote.domain.entity.User;
+import KKKOBUGI.web.domain.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User, Long> {

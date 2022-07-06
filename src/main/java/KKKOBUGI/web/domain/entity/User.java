@@ -1,4 +1,4 @@
-package KKKOBUGI.healthNote.domain.entity;
+package KKKOBUGI.web.domain.entity;
 
 import lombok.AccessLevel;
 import lombok.Getter;

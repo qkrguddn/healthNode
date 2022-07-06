@@ -1,6 +1,6 @@
-package KKKOBUGI.healthNote.repository;
+package KKKOBUGI.web.repository;
 
-import KKKOBUGI.healthNote.domain.entity.ExerciseLog;
+import KKKOBUGI.web.domain.entity.ExerciseLog;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ExerciseLogRepository extends JpaRepository<ExerciseLog, Long> {
