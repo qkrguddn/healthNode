@@ -1,11 +1,8 @@
-package KKKOBUGI.healthNote.domain.entity;
+package KKKOBUGI.web.domain.entity;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -13,12 +10,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static javax.persistence.FetchType.LAZY;
-
+@ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
 //@MappedSuperclass   @EntityListeners(AuditingEntityListener.class)
 public class Board {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "board_id")
@@ -26,11 +24,6 @@ public class Board {
     private String nickname;
     private String title;
     private String content;
-
-    public Board(String nickname, String title) {
-        this.nickname = nickname;
-        this.title = title;
-    }
 
     @CreatedDate
     @Column(updatable = false)
@@ -46,6 +39,19 @@ public class Board {
     @OneToMany(mappedBy = "board")
     private List<Comment> comments = new ArrayList<>();
 
+    @Builder // 빌더 패턴 적용
+    public Board(Long id, String nickname, String title, String content) {
+        this.id = id;
+        this.nickname = nickname;
+        this.title = title;
+        this.content = content;
+    }
+
+    public Board(String nickname, String title, String content) {
+        this.nickname = nickname;
+        this.title = title;
+        this.content = content;
+    }
 }
 
 

@@ -1,10 +1,10 @@
-package KKKOBUGI.healthNote.domain.entity;
+package KKKOBUGI.web.domain.entity;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -34,5 +34,12 @@ public class Comment {
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "board_id")
     private Board board;
+
+    @Builder // 빌더 패턴 적용
+    public Comment(Long id, String nickname, String content) {
+        this.id = id;
+        this.nickname = nickname;
+        this.content = content;
+    }
 }
 
