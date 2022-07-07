@@ -26,11 +26,11 @@ public class BoardService {
     //게시판 등록
     public BoardDto saveBorad(BoardDto boardDto) {
         Board board = boardDto.toEntity();
-        boardRepository.save(board);
-        System.out.println("entity: " + board.toString());
+       Board savedBoard = boardRepository.save(board);
+        boardDto.setCreateDate(savedBoard.getCreateDate());
+        boardDto.setId(savedBoard.getId());
         return boardDto;
     }
-
     //게시판 삭제
     public void deleteBoard(Long id) {
         boardRepository.deleteById(id);
@@ -58,19 +58,18 @@ public class BoardService {
      * comment(n) 대 board(1) 관계이므로 생각하면서 코드짤 것.
      * */
     public BoardDto getCommentPage(Long id) {
-//    Optional<Board> boardEntityWrapper = boardRepository.findById(id);
-//    Board board = boardEntityWrapper.get();
-//
+        //해당 기능은 comment가 n인 경우 이므로 comment 파트에서 작성하였음.
         return null;
     }
 
     //entity -> dto 변환 하는 빌더
     private BoardDto convertEntityToDto(Board board) {
         return BoardDto.builder()
-//                .id(boardEntity.getId())
+                .id(board.getId())
                 .nickname(board.getNickname())
                 .title(board.getTitle())
                 .content(board.getContent())
+                .createDate(board.getCreateDate())
                 .build();
     }
 }
