@@ -14,9 +14,7 @@ import static javax.persistence.FetchType.LAZY;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
-//@MappedSuperclass   @EntityListeners(AuditingEntityListener.class)
 public class Board {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "board_id")
@@ -40,11 +38,12 @@ public class Board {
     private List<Comment> comments = new ArrayList<>();
 
     @Builder // 빌더 패턴 적용
-    public Board(Long id, String nickname, String title, String content) {
+    public Board(Long id, String nickname, String title, String content, LocalDateTime createDate) {
         this.id = id;
         this.nickname = nickname;
         this.title = title;
         this.content = content;
+        this.createDate = createDate.now();
     }
 
     public Board(String nickname, String title, String content) {
